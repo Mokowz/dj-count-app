@@ -32,5 +32,5 @@ COPY . .
 EXPOSE 8000
 
 # Run the app
-CMD ["/app/django/count-app/venv/bin/python", "manage.py", "runserver"]
+# CMD ["/app/django/count-app/venv/bin/python", "manage.py", "runserver", "0.0.0.0:8000"]
 
