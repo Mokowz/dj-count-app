@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Build Docker Image
         run: docker compose build
@@ -25,7 +25,7 @@ jobs:
 
     steps:
       - name: Checkout the code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Test the Image by running it
         run: docker compose up -d
 
