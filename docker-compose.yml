@@ -3,8 +3,24 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
-    command: gunicorn --bind 0.0.0.0:8000 app.wsgi
+    env_file:
+      - .env
+    command: gunicorn --bind 0.0.0.0:8000 app.wsgi:application
     volumes:
       - .:/app/django/count-app-v2
+      - static:/app/django/count-app-v2/staticfiles
     ports:
       - '8000:8000'
+
+  nginx:
+    image: nginx:1.27.0-alpine-slim
+    ports:
+      - '80:80'
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - static:/app/django/count-app-v2/staticfiles
+    depends_on:
+      - web
+
+volumes:
+  static:

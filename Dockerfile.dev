@@ -19,5 +19,6 @@ COPY . .
 # Expose port
 EXPOSE 8000
 
-# Run the app
-# CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+RUN chmod +x entrypoint.sh
+
+ENTRYPOINT ["bash", "entrypoint.sh" ]
